@@ -1,6 +1,26 @@
 # AI 模型构建工具 — Windows 本地安装记录
 
+> 仓库地址：https://github.com/make1271/ai-tools-setup
+
 本机环境：Windows 11 x64，境内网络（无代理），硬盘 C/D/E 三块。
+
+## 下载地址
+
+| 工具 | 下载 |
+|------|------|
+| GPT4All | https://www.nubigpt.com/ |
+| LM Studio | https://lmstudio.ai/download |
+| Jan | https://github.com/janhq/jan/releases/latest |
+
+## 静默安装命令
+
+```powershell
+# LM Studio (NSIS)
+Start-Process "LM-Studio-x.x.x-x-x64.exe" -ArgumentList "/S" -Wait
+
+# Jan (NSIS)
+Start-Process "Jan_x.x.x_x64-setup.exe" -ArgumentList "/S" -Wait
+```
 
 ## 已安装工具
 
