@@ -1,90 +1,89 @@
-# AI 模型构建工具 — Windows 本地安装记录
+# 🐜 蚂二的工作台 — AI 工具与模型全览
 
-> 仓库地址：https://github.com/make1271/ai-tools-setup
+> 仓库：https://github.com/make1271/ai-tools-setup  
+> 环境：Windows 11 x64 · 境内网络（无代理）· 硬盘 C/D/E
 
-本机环境：Windows 11 x64，境内网络（无代理），硬盘 C/D/E 三块。
+---
 
-## 下载地址
+## 一、独立智能体
 
-| 工具 | 下载 |
-|------|------|
-| GPT4All | https://www.nubigpt.com/ |
-| LM Studio | https://lmstudio.ai/download |
-| Jan | https://github.com/janhq/jan/releases/latest |
+具备独立推理、自主行动能力的 AI。
 
-## 静默安装命令
+### 本地大语言模型（Ollama，8 个，177GB）
 
-```powershell
-# LM Studio (NSIS)
-Start-Process "LM-Studio-x.x.x-x-x64.exe" -ArgumentList "/S" -Wait
+| # | 模型 | 大小 | 类型 | 能力 |
+|---|------|------|------|------|
+| 1 | `qwen2.5:72b` | 47 GB | 本地 | 通义千问，中文最强 |
+| 2 | `llama3.3:70b` | 42 GB | 本地 | Meta 旗舰，通用推理 |
+| 3 | `gpt-oss:120b` | 65 GB | 本地 | 开源 GPT 级，120B 参数 |
+| 4 | `lfm2:latest` | 14 GB | 本地 | 轻量快速推理 |
+| 5 | `hermes3:latest` | 4.7 GB | 本地 | 指令跟随，工具调用 |
+| 6 | `mistral:latest` | 4.4 GB | 本地 | 高效轻量，Mistral AI |
+| 7 | `glm-5:cloud` | — | 云端 | 智谱 GLM-5，API 调用 |
+| 8 | `gpt-oss:120b-cloud` | — | 云端 | GPT-OSS 云端版 |
 
-# Jan (NSIS)
-Start-Process "Jan_x.x.x_x64-setup.exe" -ArgumentList "/S" -Wait
-```
+### AI 编程助手
 
-## 已安装工具
+| 工具 | 版本 | 类型 |
+|------|------|------|
+| WorkBuddy（蚂二） | — | 主 AI 助手，当前操控者 |
+| OpenAI Codex CLI | 0.130.0 | npm 全局，终端 AI |
+| OpenClaw | 2026.5.12 | npm 全局，多模型客户端 |
 
-| 工具 | 版本 | 主程序 | 类型 |
-|------|------|--------|------|
-| GPT4All | latest | `C:\Users\make\gpt4all\bin\chat.exe` | 桌面 GUI |
-| LM Studio | 0.4.14-4 | `E:\LM-Studio-0.4.14-4-x64\LM Studio\LM Studio.exe` | 桌面 GUI |
-| Jan | 0.8.0 | `C:\Users\make\AppData\Local\Programs\jan\Jan.exe` | 桌面 GUI |
+---
 
-## 安装踩坑
+## 二、AI 桌面应用
 
-### LM Studio
-- 官网下载页是 Next.js SPA，命令行无法获取直链
-- `irm https://lmstudio.ai/install.ps1 | iex` 装的是 llmster 无头版，非 GUI
-- GUI 版需手动从 https://lmstudio.ai/download 下载 exe
-- 静默安装：`LM-Studio-xxx.exe /S`
+图形化模型运行与聊天界面。
 
-### Jan
-- GitHub Release 下载极慢（~18KB/s），需耐心
-- 官网下的 `Jan AI Installer.exe`(1.3MB) 是 .NET web 下载器，非完整包
-- 完整包从 GitHub Releases 下载：`Jan_0.8.0_x64-setup.exe`（约 180MB）
-- 静默安装：`Jan_xxx.exe /S`
+| # | 应用 | 版本 | 安装路径 |
+|---|------|------|----------|
+| 1 | **GPT4All** | latest | `C:\Users\make\gpt4all\bin\chat.exe` |
+| 2 | **LM Studio** | 0.4.14-4 | `E:\LM-Studio-0.4.14-4-x64\LM Studio\LM Studio.exe` |
+| 3 | **Jan** | 0.8.0 | `C:\Users\make\AppData\Local\Programs\jan\Jan.exe` |
 
-### GPT4All
-- 33MB exe 是 Qt web 下载器，安装时需联网拉完整包
+---
 
-## 本地 Ollama 模型
-
-已拉取 8 个模型（详见下方），共占用约 177GB：
-
-| 模型 | 大小 |
-|------|------|
-| hermes3:latest | 4.7 GB |
-| qwen2.5:72b | 47 GB |
-| llama3.3:70b | 42 GB |
-| mistral:latest | 4.4 GB |
-| glm-5:cloud | 云端 |
-| gpt-oss:120b-cloud | 云端 |
-| lfm2:latest | 14 GB |
-| gpt-oss:120b | 65 GB |
-
-## Python 推理库
+## 三、Python 推理库
 
 虚拟环境：`C:\Users\make\.workbuddy\binaries\python\envs\default`（Python 3.13.12）
 
-### 安装命令
+| # | 库 | 版本 | 说明 |
+|---|----|------|------|
+| 1 | **torch** | 2.12.0 CPU | 深度学习框架，GPU 不可用时 CPU 版 |
+| 2 | **transformers** | 5.9.0 | HuggingFace 模型加载与推理 |
+| 3 | **ollama** | 0.6.2 | Ollama API Python 客户端 |
+| 4 | **huggingface-hub** | 1.17.0 | 模型下载与管理 |
+| 5 | **safetensors** | 0.7.0 | 安全高效的模型序列化 |
+| 6 | **numpy** | 2.4.6 | 数值计算基础 |
+| 7 | llama-cpp-python | — | ❌ 缺 C++ 编译器，待装 |
+
+---
+
+## 安装指南
+
+### 桌面应用
+
+| 应用 | 下载 | 静默安装 |
+|------|------|----------|
+| GPT4All | https://www.nubigpt.com/ | 手动 |
+| LM Studio | https://lmstudio.ai/download | `LM-Studio-xxx.exe /S` |
+| Jan | https://github.com/janhq/jan/releases | `Jan_xxx.exe /S` |
+
+### Python 推理库
 
 ```bash
-# 激活虚拟环境
-Scripts\activate
-
-# 清华镜像安装（国内快速）
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn \
-  torch transformers ollama
+# 清华镜像加速
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple \
+  --trusted-host pypi.tuna.tsinghua.edu.cn \
+  torch transformers ollama huggingface-hub safetensors numpy
 ```
 
-### 已安装
+---
 
-| 库 | 版本 | 说明 |
-|----|------|------|
-| torch | 2.12.0 (CPU) | 无 NVIDIA GPU，CPU 版 |
-| transformers | 5.9.0 | HuggingFace 模型加载 |
-| ollama | 0.6.2 | Ollama Python 客户端 |
-| huggingface-hub | 1.17.0 | HF 模型下载 |
-| safetensors | 0.7.0 | 安全模型格式 |
-| numpy | 2.4.6 | 数值计算 |
-| llama-cpp-python | — | ❌ Python 3.13 无预编译 wheel，需 Visual C++ Build Tools 源码编译 |
+## 踩坑记录
+
+- **LM Studio**：官网 Next.js SPA，命令行抓不到直链；`irm ... | iex` 装的是 llmster 无头版
+- **Jan**：官网下载器仅 1.3MB，需从 GitHub Releases 拿完整包（~180MB）
+- **llama-cpp-python**：Python 3.13 无预编译 wheel，需 Visual C++ Build Tools
+- **GitHub**：HTTPS 443 不稳，已配 SSH + 部署密钥；大文件下载用 PowerShell 更稳
