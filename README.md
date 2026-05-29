@@ -61,3 +61,30 @@ Start-Process "Jan_x.x.x_x64-setup.exe" -ArgumentList "/S" -Wait
 | gpt-oss:120b-cloud | 云端 |
 | lfm2:latest | 14 GB |
 | gpt-oss:120b | 65 GB |
+
+## Python 推理库
+
+虚拟环境：`C:\Users\make\.workbuddy\binaries\python\envs\default`（Python 3.13.12）
+
+### 安装命令
+
+```bash
+# 激活虚拟环境
+Scripts\activate
+
+# 清华镜像安装（国内快速）
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn \
+  torch transformers ollama
+```
+
+### 已安装
+
+| 库 | 版本 | 说明 |
+|----|------|------|
+| torch | 2.12.0 (CPU) | 无 NVIDIA GPU，CPU 版 |
+| transformers | 5.9.0 | HuggingFace 模型加载 |
+| ollama | 0.6.2 | Ollama Python 客户端 |
+| huggingface-hub | 1.17.0 | HF 模型下载 |
+| safetensors | 0.7.0 | 安全模型格式 |
+| numpy | 2.4.6 | 数值计算 |
+| llama-cpp-python | — | ❌ Python 3.13 无预编译 wheel，需 Visual C++ Build Tools 源码编译 |
